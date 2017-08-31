@@ -53,4 +53,17 @@ QUnit.module('Тестируем функцию tree', function () {
 		assert.strictEqual(tree(8), expected);
 		assert.strictEqual(tree('8'), expected);
 	});
+    QUnit.test('Не число', function (assert) {
+		assert.strictEqual(tree(''), null);
+		assert.strictEqual(tree('12trees'), null);
+        assert.strictEqual(tree('.abc'), null);
+        assert.strictEqual(tree('tree3'), null);
+        assert.strictEqual(tree('null'), null);
+	});
+    QUnit.test('Нецелое число', function (assert) {
+		assert.strictEqual(tree('3.4'), null);
+		assert.strictEqual(tree('3.4'), null);
+        assert.strictEqual(tree('0.4'), null);
+        assert.strictEqual(tree('2.3'), null);
+	});
 });
